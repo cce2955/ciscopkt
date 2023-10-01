@@ -1,50 +1,59 @@
-# Three-Router Network Setup in Cisco Packet Tracer
+# Multi-Router Network Configuration
 
-This document describes a network setup with three routers, each connected to its respective switch and end user device, with DHCP configured for local networks.
+This project establishes a network topology involving four routers. Each router serves its own local network, and they are interconnected to facilitate communication between different end-user devices.
 
 ## Network Topology
 
-- **Router1**
-  - DHCP Pool for Local Network: `192.168.1.0/24`
-  - Connected to **Router2** via `10.0.0.0/30`
-- **Router2**
-  - DHCP Pool for Local Network: `192.168.2.0/24`
-  - Connected to **Router1** via `10.0.0.0/30`
-  - Connected to **Router3** via `10.0.1.0/30`
-- **Router3**
-  - DHCP Pool for Local Network: `192.168.3.0/24`
-  - Connected to **Router2** via `10.0.1.0/30`
+- **Router1 (R1)**:
+  - Local Network: 192.168.1.x
+  - Interface: GigabitEthernet0/1
+    - IP: 10.0.0.1/30
 
-## Configuration Steps
+- **Router2 (R2)**:
+  - Local Network: 192.168.2.x
+  - Interface: GigabitEthernet0/1
+    - IP: 10.0.0.2/30
+  - Interface: GigabitEthernet0/2
+    - IP: 10.0.1.2/30
 
-1. **Physical Setup**
-   - Connect each router to its respective switch.
-   - Connect an end user device (e.g., PC) to each switch.
-   - Connect **Router1** to **Router2** (consider using a crossover cable).
-   - Connect **Router2** to **Router3**.
+- **Router3 (R3)**:
+  - Local Network: 192.168.3.x
+  - Interface: GigabitEthernet0/1
+    - IP: 10.0.1.1/30
+  - Interface: GigabitEthernet0/2
+    - IP: 10.0.2.1/30
 
-2. **IP Address and DHCP Configuration**
-   - Assign IPs to each router interface.
-   - Set up DHCP on each router to provide IP addresses to end devices in their respective local networks.
-     - Ensure the DHCP pool excludes the router's IP and any static IPs you've assigned.
-     - Set the default gateway in the DHCP pool to the router's local IP.
-   - Ensure end devices are set to obtain an IP address automatically.
+- **Router4 (R4)**:
+  - Local Network: 192.168.4.x
+  - Interface: GigabitEthernet0/1
+    - IP: 10.0.2.2/30
 
-3. **Routing**
-   - Set up static routes to ensure each router knows about the other networks.
-   - Ensure end-to-end connectivity between all devices.
+## Communication Flow
 
-## Testing
+1. **R1** communicates with **R2** via the 10.0.0.0/30 network.
+2. **R2** communicates with **R3** via the 10.0.1.0/30 network.
+3. **R3** communicates with **R4** via the 10.0.2.0/30 network.
+4. All Routers are able to communicate directly wth each other
+## Project Objectives
 
-1. Check that end devices receive IP addresses from the DHCP pool.
-2. Ping between end devices across different networks to ensure proper communication.
-3. Use `show ip route` on routers to verify routing tables.
-4. Use `show ip dhcp binding` on routers to see which devices have received IPs from DHCP.
-5. Troubleshoot using ping between routers, checking interface statuses, and verifying IP configurations.
+- Ensure all end-user devices can communicate across routers.
+- Configure static routes to manage inter-router communication.
+- Maintain network security by controlling inter-router communication paths.
+
+## Usage
+
+1. Set up the routers as per the given topology.
+2. Configure interfaces with the provided IP addresses.
+3. Assign IPs to end-user devices within their respective 192.168.x.0/24 networks.
+4. Set up static routes on each router to ensure inter-router communication.
+5. Test communication between end-user devices.
 
 ## Notes
 
-- Ensure all interfaces are up (`no shutdown` command in Cisco devices).
-- Double-check subnet masks and default gateways on end devices.
-- For extended networks, consider using dynamic routing protocols like OSPF or EIGRP.
+- Make sure to regularly save your router configurations to avoid data loss.
+- Monitor router interfaces to ensure they're up and operational.
+- Adjust the network topology as needed based on project requirements.
 
+## Conclusion
+
+This project provides a foundational setup for a multi-router network environment. Each router serves its distinct local network, allowing devices to communicate within and across these networks.
