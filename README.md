@@ -1,74 +1,50 @@
-# Cisco Packet Tracer Network Simulation
+# Three-Router Network Setup in Cisco Packet Tracer
 
-## Overview
-
-This Cisco Packet Tracer (.pkt) file simulates a network topology connecting 20 devices across two routers and two switches. The simulation showcases a basic network setup with interconnectivity between devices. This README provides an overview of the simulation and instructions for its use.
-
-## Prerequisites
-
-- Cisco Packet Tracer software (Version X.X or higher) installed on your computer.
-- Basic understanding of networking concepts and Cisco Packet Tracer.
+This document describes a network setup with three routers, each connected to its respective switch and end user device, with DHCP configured for local networks.
 
 ## Network Topology
 
-The network topology consists of the following components:
+- **Router1**
+  - DHCP Pool for Local Network: `192.168.1.0/24`
+  - Connected to **Router2** via `10.0.0.0/30`
+- **Router2**
+  - DHCP Pool for Local Network: `192.168.2.0/24`
+  - Connected to **Router1** via `10.0.0.0/30`
+  - Connected to **Router3** via `10.0.1.0/30`
+- **Router3**
+  - DHCP Pool for Local Network: `192.168.3.0/24`
+  - Connected to **Router2** via `10.0.1.0/30`
 
-- **Router1:** Cisco 2901 Series Router
-  - GigabitEthernet0/0: Connected to Switch1
-  - GigabitEthernet0/1: Connected to Router2
+## Configuration Steps
 
-- **Router2:** Cisco 2901 Series Router
-  - GigabitEthernet0/0: Connected to Switch2
-  - GigabitEthernet0/1: Connected to Router1
+1. **Physical Setup**
+   - Connect each router to its respective switch.
+   - Connect an end user device (e.g., PC) to each switch.
+   - Connect **Router1** to **Router2** (consider using a crossover cable).
+   - Connect **Router2** to **Router3**.
 
-- **Switch1:** Cisco 2960 Series Switch
-  - FastEthernet0/1 to FastEthernet0/10: Connected to Devices 1-10
-  - GigabitEthernet0/1: Connected to Router1
+2. **IP Address and DHCP Configuration**
+   - Assign IPs to each router interface.
+   - Set up DHCP on each router to provide IP addresses to end devices in their respective local networks.
+     - Ensure the DHCP pool excludes the router's IP and any static IPs you've assigned.
+     - Set the default gateway in the DHCP pool to the router's local IP.
+   - Ensure end devices are set to obtain an IP address automatically.
 
-- **Switch2:** Cisco 2960 Series Switch
-  - FastEthernet0/1 to FastEthernet0/10: Connected to Devices 11-20
-  - GigabitEthernet0/1: Connected to Router2
+3. **Routing**
+   - Set up static routes to ensure each router knows about the other networks.
+   - Ensure end-to-end connectivity between all devices.
 
-- **Devices 1-20:** These represent end-user devices, such as PCs, laptops, or servers, connected to the switches.
+## Testing
 
-## DHCP Pools
+1. Check that end devices receive IP addresses from the DHCP pool.
+2. Ping between end devices across different networks to ensure proper communication.
+3. Use `show ip route` on routers to verify routing tables.
+4. Use `show ip dhcp binding` on routers to see which devices have received IPs from DHCP.
+5. Troubleshoot using ping between routers, checking interface statuses, and verifying IP configurations.
 
-Each router provides DHCP services to a different subnet:
+## Notes
 
-- **Router1 DHCP Pool (vlan1):**
-  - Subnet: 192.168.2.0/24
-  - Default Gateway: 192.168.2.1
-  - DNS Server: 8.8.8.8
+- Ensure all interfaces are up (`no shutdown` command in Cisco devices).
+- Double-check subnet masks and default gateways on end devices.
+- For extended networks, consider using dynamic routing protocols like OSPF or EIGRP.
 
-- **Router2 DHCP Pool (vlan2):**
-  - Subnet: 192.168.3.0/24
-  - Default Gateway: 192.168.3.1
-  - DNS Server: 8.8.8.8
-
-## Instructions
-
-1. Open the simulation file using Cisco Packet Tracer.
-
-2. To start the simulation, click on the "Play" button or navigate to the "Simulation" tab and choose "Realtime Mode."
-
-3. Observe the network topology and the connectivity between devices, routers, and switches.
-
-4. To interact with the devices, select a device, go to the "CLI" tab, and use the command-line interface to configure, troubleshoot, or ping other devices.
-
-5. Experiment with various network configurations, IP addressing, and routing protocols to learn and practice networking concepts.
-
-6. To stop the simulation, click on the "Stop" button or exit the "Realtime Mode."
-
-## Additional Notes
-
-- This simulation provides a basic network setup. Feel free to modify and expand the network as needed for your learning or testing purposes.
-
-- Save your changes as a new Packet Tracer (.pkt) file if you want to preserve your configurations or experiments.
-
-## Credits
-
-This simulation was created for educational purposes and is not intended for production use.
-
-## License
-
-This Packet Tracer simulation is provided under the [MIT License](LICENSE).
