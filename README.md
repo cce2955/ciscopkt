@@ -30,9 +30,9 @@ This project establishes a network topology involving four routers. Each router 
 
 ## Communication Flow
 
-1. **R1** communicates with **R2** via the 10.0.0.0/30 network.
-2. **R2** communicates with **R3** via the 10.0.1.0/30 network.
-3. **R3** communicates with **R4** via the 10.0.2.0/30 network.
+1. **Router 1** communicates with **Router 2** via the 10.0.0.0/30 network.
+2. **Router 2** communicates with **Router 3** via the 10.0.1.0/30 network.
+3. **Router 3** communicates with **Router4** via the 10.0.2.0/30 network.
 4. All Routers are able to communicate directly wth each other
 ## Project Objectives
 
