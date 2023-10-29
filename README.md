@@ -1,59 +1,47 @@
-# Multi-Router Network Configuration
+# Cisco Packet Tracer Network Project
 
-This project establishes a network topology involving four routers. Each router serves its own local network, and they are interconnected to facilitate communication between different end-user devices.
+## Overview
 
-## Network Topology
+This project demonstrates a complex network topology set up using Cisco Packet Tracer. It showcases advanced networking skills, including routing, switching, DHCP configuration, and access control.
 
-- **Router1 (R1)**:
-  - Local Network: 192.168.1.x
-  - Interface: GigabitEthernet0/1
-    - IP: 10.0.0.1/30
+## Topology
 
-- **Router2 (R2)**:
-  - Local Network: 192.168.2.x
-  - Interface: GigabitEthernet0/1
-    - IP: 10.0.0.2/30
-  - Interface: GigabitEthernet0/2
-    - IP: 10.0.1.2/30
+```plaintext
+SW1       SW2
+|         |
+R1 ------ R2
+|
+R4 ------ R3
+|         |
+SW4       SW3
+```
 
-- **Router3 (R3)**:
-  - Local Network: 192.168.3.x
-  - Interface: GigabitEthernet0/1
-    - IP: 10.0.1.1/30
-  - Interface: GigabitEthernet0/2
-    - IP: 10.0.2.1/30
 
-- **Router4 (R4)**:
-  - Local Network: 192.168.4.x
-  - Interface: GigabitEthernet0/1
-    - IP: 10.0.2.2/30
 
-## Communication Flow
+## Technologies Used
 
-1. **Router 1** communicates with **Router 2** via the 10.0.0.0/30 network.
-2. **Router 2** communicates with **Router 3** via the 10.0.1.0/30 network.
-3. **Router 3** communicates with **Router4** via the 10.0.2.0/30 network.
-4. All Routers are able to communicate directly wth each other
-## Project Objectives
+1. **Routing**: OSPF (Open Shortest Path First) is used for dynamic routing between routers to ensure effective inter-router communication.
+2. **DHCP**: Dynamic Host Configuration Protocol is set up on routers to dynamically assign IP addresses to End User devices.
+3. **Access Control**: Access Control Lists (ACLs) are implemented to control traffic flow between specific routers, demonstrating a proficiency in network security measures.
 
-- Ensure all end-user devices can communicate across routers.
-- Configure static routes to manage inter-router communication.
-- Maintain network security by controlling inter-router communication paths.
+## Purpose
 
-## Usage
+The main purpose of this project is to:
 
-1. Set up the routers as per the given topology.
-2. Configure interfaces with the provided IP addresses.
-3. Assign IPs to end-user devices within their respective 192.168.x.0/24 networks.
-4. Set up static routes on each router to ensure inter-router communication.
-5. Test communication between end-user devices.
+1. Exhibit a mastery of setting up and configuring a multi-router and multi-switch environment.
+2. Showcase the ability to design and implement complex IP addressing schemes.
+3. Demonstrate proficiency in setting up DHCP for automatic IP assignment.
+4. Display skills in implementing OSPF as a dynamic routing protocol.
+5. Highlight advanced access control techniques using ACLs.
 
-## Notes
+## Key Features
 
-- Make sure to regularly save your router configurations to avoid data loss.
-- Monitor router interfaces to ensure they're up and operational.
-- Adjust the network topology as needed based on project requirements.
+1. **Segmented Network**: The network is divided into multiple segments, each with its own IP range, providing an organized and scalable design.
+2. **Robust Routing**: OSPF ensures that all routers are aware of all routes in the network, providing redundancy and efficient path selection.
+3. **Dynamic IP Assignment**: End-user devices receive their IP addresses from a DHCP pool, simplifying network management.
+4. **Selective Communication**: Using ACLs, selective communication is enforced, such as restricting communication between R4 and R2.
 
 ## Conclusion
 
-This project provides a foundational setup for a multi-router network environment. Each router serves its distinct local network, allowing devices to communicate within and across these networks.
+This Packet Tracer project is a testament to advanced networking skills and the ability to design, implement, and manage complex network topologies. It serves as an excellent reference for anyone looking to understand advanced networking concepts in a practical setting.
+
