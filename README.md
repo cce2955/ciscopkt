@@ -22,7 +22,7 @@ SW4       SW3
 
 1. **Routing**: OSPF (Open Shortest Path First) is used for dynamic routing between routers to ensure effective inter-router communication.
 2. **DHCP**: Dynamic Host Configuration Protocol is set up on routers to dynamically assign IP addresses to End User devices.
-3. **Access Control**: Access Control Lists (ACLs) are implemented to control traffic flow between specific routers, demonstrating a proficiency in network security measures.
+3. **Access Control**: Access Control Lists (ACLs) are implemented to control traffic flow between specific routers, demonstrating a proficiency in network security measures. To be more clear, the end user devices on R4 are block from communicating with the devices on R2, while still having communication with other routers
 
 ## Purpose
 
